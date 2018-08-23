@@ -1,8 +1,7 @@
-<% provide(:title, "Home") %>
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Image Cache Test | <%= yield(:title) %></title>
+    <title><%= full_title(yield(:title)) %></title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
