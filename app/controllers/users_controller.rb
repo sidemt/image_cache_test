@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      log_in @user
       # If the user is successfully saved
       flash[:success] = "Welcome to the Image Cache Test App!"
       redirect_to @user
