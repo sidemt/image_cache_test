@@ -2,7 +2,7 @@
   <div class="container">
     <ul>
       <% if logged_in? %>
-        <li>Logged in as: <%= current_user.email %></li>
+        <li id="user_info">Logged in as: <%= current_user.email %></li>
         <li><%= link_to "Log out", logout_path, method: :delete %></li>
       <% else %>
         <li><%= link_to "Log in", login_path %></li>
