@@ -1,1 +1,10 @@
+<h1>User profile</h1>
+<div>
 <%= @user.name %>, <%= @user.email %>
+
+<!-- Show delete user link if the current user is an admin -->
+<% if current_user.admin? && !current_user?(@user) %>
+  | <%= link_to "Delete this user", @user, method: :delete,
+                                         data: { confirm: "You sure?" } %>
+<% end %>
+</div>

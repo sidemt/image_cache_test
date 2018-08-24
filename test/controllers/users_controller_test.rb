@@ -58,4 +58,30 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert flash.empty?
     assert_redirected_to root_url
   end
+  
+  # Check that only admin users can delete a user
+  test "should redirect destroy when not logged in" do
+    assert_no_difference 'User.count' do
+      delete user_path(@user)
+    end
+    assert_redirected_to login_url
+  end
+  
+  test "should redirect destroy when logged in as a non-admin" do
+    log_in_as(@other_user)
+    assert_no_difference 'User.count' do
+      delete user_path(@user)
+    end
+    assert_redirected_to root_url
+  end
+  
+  # Test the delete link on user profile page
+  test "should delete user" do
+    log_in_as(@user)
+    get user_path(@other_user)
+    assert_select 'a', text: 'Delete this user', count: 1
+    assert_difference 'User.count', -1 do
+      delete user_path(@other_user)
+    end
+  end
 end
