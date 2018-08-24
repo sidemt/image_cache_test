@@ -17,10 +17,13 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     assert_template 'users/edit'
   end
   
-  test "successful edit" do
-    log_in_as(@user)
+  test "successful edit with friendly forwarding" do
+    # Access the edit page without logging in
     get edit_user_path(@user)
-    assert_template 'users/edit'
+    # Log in
+    log_in_as(@user)
+    # Check if the user is redirected to the edit page after log in
+    assert_redirected_to edit_user_url(@user)
     name = "Foo Bar"
     email = "foo@bar.com"
     # Check if the update can be completed without entering the password
