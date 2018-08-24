@@ -7,6 +7,12 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     @other_user = users(:archer)
   end
   
+  # Do not show user info page to not logged in users
+  test "should redirect user when not logged in" do
+    get user_path(@user)
+    assert_redirected_to login_url
+  end
+  
   test "should get new" do
     get signup_path
     assert_response :success
