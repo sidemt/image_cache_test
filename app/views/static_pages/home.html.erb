@@ -1,4 +1,19 @@
 <body>
-  <h1>StaticPages#home</h1>
-  <p>Find me in app/views/static_pages/home.html.erb</p>
+  <h1>Image Cache Test</h1>
+  <p>This image will be cached</p>
+  <div>
+
+<% if !@micropost.nil? %>
+<ol>
+  <li id="micropost-<%= @micropost.id %>">
+    <span class="content"><%= @micropost.content %></span>
+    <span class="timestamp">
+      Updated <%= time_ago_in_words(@micropost.updated_at) %> ago. (<%= @micropost.updated_at %>)
+    </span>
+  </li>
+</ol>
+<% end %>
+
+  </div>
+
 </body>
