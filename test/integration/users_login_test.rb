@@ -6,36 +6,36 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     @user = users(:michael) # User in fixture file
   end
   
-  test "login with invalid information" do
-    get login_path
-    assert_template 'sessions/new'
-    post login_path, params: { session: { email: "", password: "" } }
-    assert_template 'sessions/new'
-    assert_not flash.empty?
-    get root_path
-    assert flash.empty? # Make sure that the flash message disappears
-  end
+  # test "login with invalid information" do
+  #   get login_path
+  #   assert_template 'sessions/new'
+  #   post login_path, params: { session: { email: "", password: "" } }
+  #   assert_template 'sessions/new'
+  #   assert_not flash.empty?
+  #   get root_path
+  #   assert flash.empty? # Make sure that the flash message disappears
+  # end
   
-  test "login with vaild information followed by logout" do
+  # test "login with vaild information followed by logout" do
     
-    get login_path
-    # Log in
-    post login_path, params: { session: { email: @user.email,
-                                        password: 'password' } }
-    assert is_logged_in?
-    assert_redirected_to @user
-    follow_redirect!
-    assert_template 'users/show'
-    assert_select "a[href=?]", login_path, count: 0
-    assert_select "a[href=?]", logout_path
-    assert_select "li#user_info", "Logged in as: " + @user.email
+  #   get login_path
+  #   # Log in
+  #   post login_path, params: { session: { email: @user.email,
+  #                                       password: 'password' } }
+  #   assert is_logged_in?
+  #   assert_redirected_to @user
+  #   follow_redirect!
+  #   assert_template 'users/show'
+  #   assert_select "a[href=?]", login_path, count: 0
+  #   assert_select "a[href=?]", logout_path
+  #   assert_select "li#user_info", "Logged in as: " + @user.email
     
-    # Log out
-    delete logout_path
-    assert_not is_logged_in?
-    assert_redirected_to root_url
-    follow_redirect!
-    assert_select "a[href=?]", logout_path, count: 0
-    assert_select "li#user_info", count: 0
-  end
+  #   # Log out
+  #   delete logout_path
+  #   assert_not is_logged_in?
+  #   assert_redirected_to root_url
+  #   follow_redirect!
+  #   assert_select "a[href=?]", logout_path, count: 0
+  #   assert_select "li#user_info", count: 0
+  # end
 end
