@@ -1,0 +1,10 @@
+<h1>Edit</h1>
+<div class="row">
+  <%= form_for(@micropost) do |f| %>
+   <%= render 'shared/error_messages', object: f.object %>
+   <div class="field">
+     <%= f.text_area :content, placeholder: "Enter some text here..." %>
+   </div>
+   <%= f.submit "Update", class: "btn btn-primary" %>
+  <% end %>
+</div>
