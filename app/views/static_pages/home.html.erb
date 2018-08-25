@@ -4,14 +4,24 @@
   <div>
 
 <% if !@micropost.nil? %>
-<ol>
-  <li id="micropost-<%= @micropost.id %>">
-    <span class="content"><%= @micropost.content %></span>
-    <span class="timestamp">
-      Updated <%= time_ago_in_words(@micropost.updated_at) %> ago. (<%= @micropost.updated_at %>)
-    </span>
-  </li>
-</ol>
+  <table id="micropost_table">
+    <tr>
+      <td id="micropost_text">
+        <%= @micropost.content %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <!-- show image here -->
+        image
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span id="micropost_updated_at">Updated <%= time_ago_in_words(@micropost.updated_at) %> ago.</span> (<%= @micropost.updated_at %>)
+      </td>
+    </tr>
+  </table>
 <% end %>
 
   </div>
