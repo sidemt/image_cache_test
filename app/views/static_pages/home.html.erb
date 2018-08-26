@@ -1,4 +1,31 @@
 <body>
-  <h1>StaticPages#home</h1>
-  <p>Find me in app/views/static_pages/home.html.erb</p>
+  <h1>Image Cache Test</h1>
+  <p>This image will be cached</p>
+  <div>
+
+<% if !@micropost.nil? %>
+  <table id="micropost_table">
+    <tr>
+      <td id="micropost_text">
+        <%= @micropost.content %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <!-- show image here -->
+        image
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span id="micropost_updated_at">Updated <%= time_ago_in_words(@micropost.updated_at) %> ago.</span> (<%= @micropost.updated_at %>)
+      </td>
+    </tr>
+  </table>
+  
+  <%= link_to 'Edit', edit_micropost_path(@micropost) %>
+<% end %>
+
+  </div>
+
 </body>
