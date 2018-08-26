@@ -24,3 +24,6 @@
 
 # Ignore Spring files.
 /spring/*.pid
+
+# Ignore uploaded image
+/public/uploads/micropost/picture/cache_image/cache_this_image.png

@@ -2,10 +2,22 @@
 <div class="row">
   <%= form_for(@micropost) do |f| %>
    <%= render 'shared/error_messages', object: f.object %>
+   <div>
+     <p>
+       入力したテキストおよび画像は公開されます。
+       個人情報や不適切な内容を投稿することはご遠慮ください。<br>
+       The text and picture you upload here will be public.
+       Please do not upload personal information or offensive contents.
+     </p>
+   </div>
    <div class="field">
      <%= f.text_area :content, placeholder: "Enter some text here..." %>
    </div>
    <div class="picture">
+     <p>
+       png ファイルのみアップロード可能です。<br>
+       You can upload files with .png extention.
+      </p>
      <%= f.file_field :picture, accept: 'image/png' %>
    </div>
    <%= f.submit "Update", class: "btn btn-primary" %>
