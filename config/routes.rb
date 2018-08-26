@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   # delete '/logout', to: 'sessions#destroy'
   
   # resources :users
-  resources :microposts, only: [:edit, :update]
+  resources :microposts, only: [:show, :edit, :update]
 
 end

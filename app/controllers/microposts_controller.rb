@@ -1,5 +1,9 @@
 class MicropostsController < ApplicationController
-  
+
+  def show
+    redirect_to edit_micropost_path
+  end
+
   def edit
     @micropost = Micropost.find(params[:id])
   end
