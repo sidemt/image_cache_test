@@ -8,12 +8,14 @@ class MicropostsEditTest < ActionDispatch::IntegrationTest
   
   test "successful edit" do
     after_change = "changed text"
+    picture = fixture_file_upload('test/fixtures/sample.png', 'img/png')
     
     get edit_micropost_path(@micropost)
     assert_template 'microposts/edit'
     
-    patch micropost_path(@micropost), params: { micropost: { content: after_change } }
-    
+    patch micropost_path(@micropost), params: { micropost: { content: after_change,
+                                                             picture: picture } }
+                                                             
     assert_redirected_to root_url
     follow_redirect!
     assert_not flash.empty?
@@ -21,6 +23,7 @@ class MicropostsEditTest < ActionDispatch::IntegrationTest
     
     @micropost.reload
     assert_equal after_change, @micropost.content
+    assert @micropost.picture?
   end
   
   test "unsuccessful edit" do
