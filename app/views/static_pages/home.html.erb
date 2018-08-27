@@ -1,33 +1,65 @@
-<body>
-  <h1>Image Cache Test</h1>
-  <p>This image will be cached</p>
-  <div>
+<div>
+  <p>
+    このページは、ブラウザのキャッシュクリア機能をテストする目的で作成されました。<br>
+    This page was created to test the browser's cache clearing function.
+  </p>
+  
+  <h2>使い方</h2>
+  <p>
+    このページでは意図的に画像をキャッシュしています。
+  </p>
+  <ol>
+    <li>「Edit」からPNG画像をアップロードする（同時にテキストも変更するとわかりやすいです）</li>
+    <li>画像がキャッシュされているので変わらない（テキストは変わるので、更新はされていることがわかる）</li>
+    <li>キャッシュのクリア、強制再読み込みなどを行うと、画像が変わることが確認できる</li>
+  </ol>
+  
+  <h2>How to Use</h2>
+  <p>
+    This page intentionally caches the image.
+  </p>
+  <ol>
+    <li>Upload a PNG image from "Edit" (If you changed the text too, it is easier to see if the update was completed.)</li>
+    <li>The picture is cached and does not change (The text will change at this point.)</li>
+    <li>If you clear the cache of your browser or perform a hard refresh, the picture you uploaded will be displayed.</li>
+  </ol>
+</div>
+
+<div>
 
 <% if !@micropost.nil? %>
-  <table id="micropost_table">
-    <tr>
-      <td id="micropost_text">
-        <%= @micropost.content %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <%= image_tag @micropost.picture.url if @micropost.picture? %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <span id="micropost_updated_at">
-          Updated <%= time_ago_in_words(@micropost.updated_at) %> ago.
-        </span> 
-        (<%= @micropost.updated_at %>)
-      </td>
-    </tr>
-  </table>
+<table id="micropost_table" class="table table-bordered">
+  <tr>
+    <th>
+      Text
+    </th>
+    <td id="micropost_text">
+      <%= @micropost.content %>
+    </td>
+  </tr>
   
-  <%= link_to 'Edit', edit_micropost_path(@micropost) %>
+  <tr>
+    <th>
+      Picture
+    </th>
+    <td>
+      <%= image_tag @micropost.picture.url if @micropost.picture? %>
+    </td>
+  </tr>
+  
+  <tr>
+    <td colspan="2">
+      <span id="micropost_updated_at">
+        Updated <%= time_ago_in_words(@micropost.updated_at) %> ago.
+      </span> 
+      (<%= @micropost.updated_at %>)
+    </td>
+  </tr>
+</table>
+
+<%= link_to 'Edit', edit_micropost_path(@micropost), class: "btn btn-primary btn-lg btn-block" %>
 <% end %>
 
-  </div>
+</div>
 
-</body>
+

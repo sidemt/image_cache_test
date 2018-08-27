@@ -13,6 +13,13 @@
 
 body {
   padding-top: 60px;
+  background-color: #f6f6f6;
+  color: #404040;
+}
+
+.container {
+  padding-left: 60px;
+  padding-right: 60px;
 }
 
 section {
@@ -44,7 +51,7 @@ h1 {
 }
 
 h2 {
-  font-size: 1.2em;
+  font-size: 2em;
   letter-spacing: -1px;
   margin-bottom: 30px;
   text-align: center;
@@ -57,10 +64,18 @@ p {
   line-height: 1.7em;
 }
 
+table {
+  background-color: #fff;
+}
+
+table th {
+  width: 100px;
+}
+
 /* forms */
 
-input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
+textarea, select, .uneditable-input {
+  // border: 1px solid #bbb;
   width: 100%;
   margin-bottom: 15px;
   @include box_sizing;
@@ -68,6 +83,11 @@ input, textarea, select, .uneditable-input {
 
 input {
   height: auto !important;
+  margin-bottom: 10px;
+}
+
+footer {
+  padding-top: 15px;
 }
 
 #error_explanation {

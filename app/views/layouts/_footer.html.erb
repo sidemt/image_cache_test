@@ -1,14 +1,12 @@
 <footer>
-  <div class="container">
-    <small>
-      Developed by: <a href="https://twitter.com/siideemt">@siideemt</a><br>
-    </small>
-    
-    <% if logged_in? %>
-      <ul>
-        <li id="user_info">Logged in as: <%= current_user.email %></li>
-        <li><%= link_to "Log out", logout_path, method: :delete %></li>
-      </ul>
-    <% end %>
-  </div>
+  <small>
+    Developed by: <a href="https://twitter.com/siideemt">@siideemt</a><br>
+  </small>
+  
+  <% if logged_in? %>
+    <ul>
+      <li id="user_info">Logged in as: <%= current_user.email %></li>
+      <li><%= link_to "Log out", logout_path, method: :delete %></li>
+    </ul>
+  <% end %>
 </footer>
