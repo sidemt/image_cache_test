@@ -1,6 +1,6 @@
-# Image cache test app (WIP)
+# Clear Cache Test App
 
-This is a test app for checking the browser cache behavior.
+This is a test app for checking the browser's clear cache behavior.
 
 This app was developed by modifying the sample app in the tutorial below.
 
